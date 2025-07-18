@@ -20,17 +20,14 @@
 
  &__header {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    position: relative;
+    flex-direction: column;
   }
 
   &--selected {
     border-color: #03050F;
   }
 
-  &__icon {
-    margin-top: 24px; 
+  &__icon { 
     width: 48px;
   }
 
@@ -48,14 +45,14 @@
 
   &__description {
     font-size: 12px;
-    color: #555;
+    color: #141938;
     font-weight: 400;
+    line-height: 1.4;
   }
 
   &__radio {
-    position: absolute;
-    top: 0;
-    right: 0;
+    display: flex;
+    justify-content: end;
   }
 
   &__circle {
@@ -70,5 +67,37 @@
   &__circle--selected {
     border-color: #389E0D;
     background: radial-gradient(circle at center, #389E0D 60%, #fff 41%);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    margin: 0 auto;
+    gap: 8px;
+
+    &__header {
+      margin-bottom: 8px;
+    }
+
+    &__block {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &__icon {
+      margin-top: 0;
+    }
+
+    &__title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    &__description {
+      margin: 0;
+    }
   }
 }

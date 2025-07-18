@@ -22,9 +22,11 @@ const Card: React.FC<CardProps> = ({
         <div className="card__radio">
         <span className={`card__circle ${selected ? 'card__circle--selected' : ''}`} />
         </div>
-        {icon && <div className="card__icon">{icon}</div>}
-    </div>
-      <div className="card__title">{title}</div>
+        <div className="card__block">
+          {icon && <div className="card__icon">{icon}</div>}
+          <div className="card__title">{title}</div>
+        </div>
+      </div>
       <div className="card__description">{description}</div>
     </div>
   );
