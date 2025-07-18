@@ -13,9 +13,37 @@
     object-fit: contain;
   }
 
+  &__divider{
+    display:none;
+  }
+
   &__text {
     font-size: 14px;
     font-weight: 400;
     color: #F8F9FF;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 18px 16px;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  
+    &__logo {
+      height: 28px;
+    }
+    &__divider{
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: #2B304E;
+      margin: 8px 0;
+    }
+    &__text {
+      font-size: 12px;
+      text-align: center;
+    }
   }
 }

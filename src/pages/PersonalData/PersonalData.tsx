@@ -21,18 +21,26 @@ export default function PersonalData() {
                 className="quote__image"
             />
           </div>
-            <div className="quote__right">
+          <div className="quote__right">
+            <div className="quote__group">
               <div className="quote__block">
                 <p className="quote__badge">Seguro Salud Flexible</p>
                 <h1 className="quote__title">Creado para ti y tu familia</h1>
-                <p className="quote__subtitle">
-                  Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe nuestra asesoría. 100% online.
-                </p>
               </div>
-              <QuoteForm />
+              <img
+                src="/familia.png"
+                alt="Familia"
+                className="quote__image2"
+              />
             </div>
+            <div className="quote__divider" />
+            <p className="quote__subtitle">
+              Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe nuestra asesoría. 100% online.
+            </p>
+           <QuoteForm /> 
           </div>
-        </main>
+        </div>
+      </main>
       <Footer />
     </div>
   );

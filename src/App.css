@@ -23,7 +23,8 @@ main {
 @media (max-width: 768px) {
   main {
     flex-direction: column;
-    padding: 2rem 1rem;
+    padding: 0 24px;
+    flex-grow: 0;
     align-items: center;
   }
 }

@@ -1,41 +1,41 @@
 .personaldata-page {
   position: relative;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+
+  &__background-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    max-height: 100%;
+    max-width: 100%;
+    contain: layout;
+  }
 }
 
-.background-overlay {
+.circle-one,
+.circle-two {
   position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-  max-height: 100%;
-  max-width: 100%;
-  contain: layout;
+  border-radius: 50%;
+  transform: scale(1.5);
+  width: 28rem;
+  height: 28rem;
+  opacity: 0.8;
+}
 
-  .circle-one,
-  .circle-two {
-    position: absolute;
-    border-radius: 50%;
-    transform: scale(1.5);
-    width: 28rem;
-    height: 28rem;
-    opacity: 0.8;
-  }
+.circle-one {
+  bottom: 0;
+  left: -16.5rem;
+  background-image: radial-gradient(circle, rgba(195, 51, 255, 1) 0%, rgba(161, 252, 70, 0) 71%);
+}
 
-  .circle-one {
-    bottom: 0;
-    left: -16.5rem;
-    background-image: radial-gradient(circle, rgba(195, 51, 255, 1) 0%, rgba(161, 252, 70, 0) 71%);
-  }
-
-  .circle-two {
-    top: 10px;
-    right: -18.5rem;
-    background-image: radial-gradient(circle, rgba(0, 244, 226, 1) 0%, rgba(161, 252, 70, 0) 71%);
-  }
+.circle-two {
+  top: 10px;
+  right: -18.5rem;
+  background-image: radial-gradient(circle, rgba(0, 244, 226, 1) 0%, rgba(161, 252, 70, 0) 71%);
 }
 
 .quote {
@@ -60,9 +60,13 @@
     border-radius: 1rem;
   }
 
+  &__image2 {
+    display: none;
+  }
+
   &__right {
     flex: 1;
-    max-width: 700px;
+    max-width: 352px;
     padding: 32px 48px 80px 48px;
     display: flex;
     flex-direction: column;
@@ -73,6 +77,10 @@
     max-width: 352px;
   }
 
+  &__divider {
+    display: none;
+  }
+
   &__badge {
     background: linear-gradient(90deg, #00F4E2 0%, #00FF7F 100%);
     color: #03050F;
@@ -81,15 +89,13 @@
     padding: 4px 8px;
     border-radius: 4px;
     display: inline-block;
-    margin-top: 0;
-    margin-bottom: 16px;
+    margin: 0 0 16px 0;
   }
 
   &__title {
     font-size: 32px;
     font-weight: 700;
-    margin-bottom: 0.5rem;
-    margin-top: 0;
+    margin: 0 0 0.5rem 0;
   }
 
   &__subtitle {
@@ -98,6 +104,11 @@
     font-weight: 600;
     letter-spacing: 0.2px;
     margin: 0;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: row;
   }
 }
 
@@ -108,13 +119,13 @@
     padding: 2rem 1rem;
 
     &__right {
-      padding: 2rem 0;
+      padding: 0 0 64px 0;
     }
   }
 }
 
 @media (max-width: 640px) {
-  .background-overlay {
+  .personaldata-page__background-overlay {
     .circle-one {
       left: -11.5rem !important;
       transform: translateY(115px) !important;
@@ -129,6 +140,74 @@
     .circle-two {
       width: 22rem !important;
       height: 22rem !important;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .circle-one,
+  .circle-two {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(1);
+    width: 28rem;
+    height: 28rem;
+    opacity: 0.6;
+  }
+
+  .circle-one {
+    bottom: -160px;
+    left: -16.5rem;
+  }
+  
+  .circle-two {
+    top: -240px;
+    right: -18.5rem;
+  }
+
+  .quote {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0;
+    width: 100%;
+    align-items: flex-start;
+
+    &__left {
+      display: none;
+    }
+
+    &__divider {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: #CCD1EE;
+      margin: 4px 0;
+    }
+
+    &__image2 {
+      display: block;
+      width: 136px;
+      height: 160px;
+      border-radius: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    &__block {
+      margin: auto 0;
+    }
+
+    &__badge {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 8px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    &__title {
+      font-size: 28px;
     }
   }
 }
