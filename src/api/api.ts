@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = 'https://rimac-front-end-challenge.netlify.app/api';
 
 export const getUsuario = async () => {
   const response = await axios.get(`${API_URL}/user.json`);
