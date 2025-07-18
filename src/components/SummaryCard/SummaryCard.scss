@@ -47,3 +47,21 @@
     font-size: 14px;
   }
 }
+
+@media (max-width: 480px) {
+  .summary-card{
+    width: 75%;
+
+    &__user {
+      font-size: 20px;
+    }
+
+    &__divider {
+      margin: 0;
+    }
+
+    &__section-title {
+      margin: 0;
+    }
+  }
+}
