@@ -1,0 +1,21 @@
+.footer {
+  background-color: #03050F;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 120px;
+  max-width: 100%;
+  z-index: 1;
+
+  &__logo {
+    height: 42px;
+    object-fit: contain;
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: 400;
+    color: #F8F9FF;
+  }
+}
