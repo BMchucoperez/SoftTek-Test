@@ -1,6 +1,6 @@
 .information {
   margin: 0 auto;
-  padding: 16px 240px;
+  padding: 24px 240px;
   text-align: center;
 
   &__back {
@@ -94,20 +94,6 @@
         scroll-snap-align: center;
       }
     }
-  }
-}
-
-.info-card {
-  flex: 0 1 calc(33.333% - 24px);
-  max-width: 352px;
-  box-sizing: border-box;
-
-  @media (max-width: 960px) {
-    flex: 0 1 calc(50% - 24px);
-  }
-
-  @media (max-width: 640px) {
-    flex: 0 1 100%;
   }
 }
 
