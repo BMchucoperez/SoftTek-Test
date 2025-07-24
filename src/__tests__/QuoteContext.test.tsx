@@ -9,7 +9,7 @@ function TestComponent() {
     <div>
       <span data-testid="document">{quoteData.document}</span>
       <span data-testid="phone">{quoteData.phone}</span>
-      <button 
+      <button
         onClick={() => updateQuoteData({ document: '12345678' })}
         data-testid="update-btn"
       >
@@ -27,8 +27,11 @@ describe('QuoteContext', () => {
       </QuoteProvider>
     );
 
-    expect(screen.getByTestId('document')).toHaveTextContent('');
-    expect(screen.getByTestId('phone')).toHaveTextContent('');
+    const documentElement = screen.getByTestId('document');
+    const phoneElement = screen.getByTestId('phone');
+
+    expect(documentElement.textContent).toBe('');
+    expect(phoneElement.textContent).toBe('');
   });
 
   test('Debería actualizar el valor del documento', () => {
@@ -39,6 +42,8 @@ describe('QuoteContext', () => {
     );
 
     fireEvent.click(screen.getByTestId('update-btn'));
-    expect(screen.getByTestId('document')).toHaveTextContent('12345678');
+
+    const documentElement = screen.getByTestId('document');
+    expect(documentElement.textContent).toBe('12345678');
   });
 });
