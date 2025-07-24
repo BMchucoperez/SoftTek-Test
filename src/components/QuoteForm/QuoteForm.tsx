@@ -18,15 +18,7 @@ export default function QuoteForm() {
     const isValid = handleSubmit(e);
 
     if (isValid) {
-      // Guardar en localStorage
-      localStorage.setItem('document', formData.document);
-      localStorage.setItem('phone', formData.phone);
-      navigate('/plans', {
-        state: {
-          document: formData.document,
-          phone: formData.phone
-        }
-      });
+      navigate('/plans');
     }
   };
 

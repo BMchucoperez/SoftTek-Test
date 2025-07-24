@@ -4,7 +4,8 @@ import TimeStep from "../../components/TimeStep/TimeStep";
 import Card from "../../components/Card/Card";
 import InfoCard from "../../components/InfoCard/InfoCard";
 import { getPlans, getUsuario } from "../../api/api";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useQuote } from "../../context/QuoteContext";
 import "./Plans.scss";
 
 export default function Plans() {
@@ -16,14 +17,12 @@ export default function Plans() {
   const [currentPlanIndex, setCurrentPlanIndex] = useState(0);
   const plansContainerRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const location = useLocation();
+  const { quoteData, setSelectedPlan, loadFromStorage } = useQuote();
 
-  const document =
-    location.state?.document ||
-    localStorage.getItem("document") ||
-    "No Disponible";
-  const phone =
-    location.state?.phone || localStorage.getItem("phone") || "No Disponible";
+  // Cargar datos del localStorage al montar el componente
+  useEffect(() => {
+    loadFromStorage();
+  }, [loadFromStorage]);
 
   useEffect(() => {
     if (selectedOption === "me") {
@@ -66,13 +65,8 @@ export default function Plans() {
       : plans;
 
   const handleSelectPlan = (plan: any) => {
-    navigate("/summary", {
-      state: {
-        plan,
-        document,
-        phone,
-      },
-    });
+    setSelectedPlan(plan);
+    navigate("/summary");
   };
 
   const handleScroll = () => {

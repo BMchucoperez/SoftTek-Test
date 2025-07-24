@@ -1,16 +1,19 @@
+import { useEffect } from 'react';
 import Header from '../../components/Header/Header';
 import TimeStep from '../../components/TimeStep/TimeStep';
 import SummaryCard from '../../components/SummaryCard/SummaryCard';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useQuote } from '../../context/QuoteContext';
 import './Summary.scss';
 
 export default function Summary() {
-    const location = useLocation();
     const navigate = useNavigate();
+    const { quoteData, selectedPlan, loadFromStorage } = useQuote();
 
-    const plan = location.state?.plan;
-    const document = location.state?.document || localStorage.getItem('document') || 'No Disponible';
-    const phone = location.state?.phone || localStorage.getItem('phone') || 'No Disponible';
+    // Cargar datos del localStorage al montar el componente
+    useEffect(() => {
+        loadFromStorage();
+    }, [loadFromStorage]);
 
     return (
         <div>
@@ -22,11 +25,11 @@ export default function Summary() {
             </button>
     
             <h1 className="titleSummary">Resumen del seguro</h1>
-            {plan && (
+            {selectedPlan && (
                 <SummaryCard
-                    plan={plan}
-                    document={document}
-                    phone={phone}
+                    plan={selectedPlan}
+                    document={quoteData.document}
+                    phone={quoteData.phone}
                 />
             )}
           </div>

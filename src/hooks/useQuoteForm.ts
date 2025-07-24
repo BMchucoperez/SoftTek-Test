@@ -1,40 +1,29 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useQuote } from '../context/QuoteContext';
 
 export function useQuoteForm() {
   const navigate = useNavigate();
-
-  const [formData, setFormData] = useState({
-    documentType: 'dni',
-    document: '',
-    phone: '',
-    privacy: false,
-    comms: false,
-  });
+  const { quoteData, updateQuoteData, selectedPlan, setSelectedPlan } = useQuote();
 
   const [formErrors, setFormErrors] = useState<any>({});
   const [loading, setLoading] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<{
-    name: string;
-    price: number;
-  } | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
     const newValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
 
-    setFormData((prev) => ({
-      ...prev,
+    updateQuoteData({
       [name]: newValue,
-    }));
+    });
   };
 
   const validate = () => {
     const errors: any = {};
-    if (!formData.document) errors.document = 'Requerido';
-    if (!formData.phone || formData.phone.length < 9) errors.phone = 'Requerido';
-    if (!formData.privacy) errors.privacy = 'Obligatorio';
-    if (!formData.comms) errors.comms = 'Obligatorio';
+    if (!quoteData.document) errors.document = 'Requerido';
+    if (!quoteData.phone || quoteData.phone.length < 9) errors.phone = 'Requerido';
+    if (!quoteData.privacy) errors.privacy = 'Obligatorio';
+    if (!quoteData.comms) errors.comms = 'Obligatorio';
     return errors;
   };
 
@@ -56,7 +45,7 @@ export function useQuoteForm() {
   };
 
   return {
-    formData,
+    formData: quoteData,
     handleInputChange,
     formErrors,
     handleSubmit,
