@@ -17,9 +17,8 @@ export default function Plans() {
   const [currentPlanIndex, setCurrentPlanIndex] = useState(0);
   const plansContainerRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const { quoteData, setSelectedPlan, loadFromStorage } = useQuote();
+  const { setSelectedPlan, loadFromStorage } = useQuote();
 
-  // Cargar datos del localStorage al montar el componente
   useEffect(() => {
     loadFromStorage();
   }, [loadFromStorage]);

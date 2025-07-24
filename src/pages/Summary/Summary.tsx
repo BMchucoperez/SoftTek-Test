@@ -8,9 +8,8 @@ import './Summary.scss';
 
 export default function Summary() {
     const navigate = useNavigate();
-    const { quoteData, selectedPlan, loadFromStorage } = useQuote();
+    const { selectedPlan, loadFromStorage } = useQuote();
 
-    // Cargar datos del localStorage al montar el componente
     useEffect(() => {
         loadFromStorage();
     }, [loadFromStorage]);
@@ -26,11 +25,7 @@ export default function Summary() {
     
             <h1 className="titleSummary">Resumen del seguro</h1>
             {selectedPlan && (
-                <SummaryCard
-                    plan={selectedPlan}
-                    document={quoteData.document}
-                    phone={quoteData.phone}
-                />
+                <SummaryCard />
             )}
           </div>
         </div>

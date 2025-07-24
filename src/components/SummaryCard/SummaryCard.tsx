@@ -1,16 +1,10 @@
 import { useEffect, useState } from 'react';
 import { getUsuario } from '../../api/api';
+import { useQuote } from '../../context/QuoteContext';
 import './SummaryCard.scss';
 
-interface SummaryCardProps {
-  plan: {
-    name: string;
-    price: number;
-  };
-  document: string;
-  phone: string;
-}
-export default function SummaryCard({ plan, document, phone }: SummaryCardProps) {
+export default function SummaryCard() {
+  const { quoteData, selectedPlan } = useQuote();
   const [user, setUser] = useState<{ name: string; lastName: string } | null>(null);
 
   useEffect(() => {
@@ -30,12 +24,12 @@ export default function SummaryCard({ plan, document, phone }: SummaryCardProps)
       <hr className="summary-card__divider" />
 
       <p className="summary-card__section-title">Responsable de pago</p>
-      <p className="summary-card__section-subtitle">DNI: {document}</p>
-      <p className="summary-card__section-subtitle">Celular: {phone}</p>
+      <p className="summary-card__section-subtitle">DNI: {quoteData.document}</p>
+      <p className="summary-card__section-subtitle">Celular: {quoteData.phone}</p>
 
       <p className="summary-card__section-title">Plan elegido</p>
-      <p className="summary-card__section-subtitle">{plan.name}</p>
-      <p className="summary-card__section-subtitle">Costo del Plan: ${plan.price} al mes</p>
+      <p className="summary-card__section-subtitle">{selectedPlan?.name}</p>
+      <p className="summary-card__section-subtitle">Costo del Plan: ${selectedPlan?.price} al mes</p>
     </div>
   );
 }
